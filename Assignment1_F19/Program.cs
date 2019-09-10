@@ -41,21 +41,34 @@ namespace Assignment1_F19
         {
             try
             {
-                int[] countdown = new int[y];
-                int p;
-                for (int i = 0; i < y; i++)
+                //rem will be used to store every digit in a number
+                int rem = 0;
+                //Populate the numbers between x and y
+                for (int i = x; i <= y; i++)
                 {
-                    countdown[i] = i + 1;
-                    p = countdown[i];
-                    while (p > 0)
+                    //num will be used to input the self-dividing numbers
+                    int num = i;
+                    //div will be used to get every digit a number
+                    int div = i;
+                    //Print all the self.-dividing numbers using While loop
+                    while (div != 0)
                     {
-                        int d = p % 10;
-                        if (d == 0 || countdown[i] % d != 0)
-                            Console.WriteLine(" " + countdown[i] + " is not ");
-                        p = p / 10;
+                        //After dividing by 10, get every digit by taking the remainder, for example: 128%10->8
+                        rem = div % 10;
+                        //Remove the  multiple of 10
+                        if (rem == 0)
+                            break;
+                        //Remove the number that cannot be divisible by digit it contains
+                        if (num % rem != 0)
+                            break;
+                        //For example: 128/10->12; 12->1
+                        div = div / 10;
                     }
-
+                    //Input the self-dividing numbers
+                    if (div == 0)
+                        Console.Write(" " + num);
                 }
+                Console.WriteLine();
             }
             catch
             {
@@ -73,7 +86,7 @@ namespace Assignment1_F19
         {
             try
             {
-                // Write your code here
+                //
             }
             catch
             {
