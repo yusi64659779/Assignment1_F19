@@ -43,7 +43,7 @@ namespace Assignment1_F19
             {
                 //rem will be used to store every digit in a number
                 int rem = 0;
-                //Populate the numbers between x and y
+                //Iterate through the numbers between x and y
                 for (int i = x; i <= y; i++)
                 {
                     //num will be used to input the self-dividing numbers
@@ -84,9 +84,20 @@ namespace Assignment1_F19
         */
         public static void printSeries(int n)
         {
+            int t = 0;
             try
             {
-                //
+                for (int i = 1; i <= n; i++)
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (t < n)
+                        {
+                            Console.Write(" " + i);
+                            t++;
+                        }
+                    }
+                }
             }
             catch
             {
@@ -108,7 +119,19 @@ namespace Assignment1_F19
         {
             try
             {
-                // Write your code here
+                //Iterate through 5 rows using for loop
+                for (int k = 1; k <= n; k++)
+                {
+                    //Iterate through the blank before the "*" using for loop
+                    for (int i = 1; i < k; i++)
+                        Console.Write(" ");
+                    //Iterate through the "*" in each row using for loop
+                    for (int j = 1; j <= 2 * (n - k) + 1; j++)
+                    {
+                        Console.Write("*");
+                    }
+                    Console.WriteLine(" ");
+                }
             }
             catch
             {
@@ -132,16 +155,23 @@ namespace Assignment1_F19
         */
         public static int numJewelsInStones(int[] J, int[] S)
         {
+            int sum = 0;
             try
             {
-                // Write your code here
+                for (int i = 0; i < S.Length; i++)
+                {
+                    for (int t = 0; t < J.Length; t++)
+                    {
+                        if (S[i] == J[t])
+                            sum = sum + 1;
+                    }
+                }
             }
             catch
             {
                 Console.WriteLine("Exception occured while computing numJewelsInStones()");
             }
-
-            return 0;
+            return sum;
         }
 
         /*
