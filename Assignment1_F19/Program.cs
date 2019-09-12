@@ -84,16 +84,21 @@ namespace Assignment1_F19
         */
         public static void printSeries(int n)
         {
+            //t will be used to control how many numbers will be output
             int t = 0;
             try
             {
+                //Output the number from 1 
                 for (int i = 1; i <= n; i++)
                 {
+                    //Iterate the number
                     for (int j = 0; j < i; j++)
                     {
+                        //Control how many numbers will be output using if clause
                         if (t < n)
                         {
                             Console.Write(" " + i);
+                            //When a number is output, t plus 1. Until t=n, the loop ends
                             t++;
                         }
                     }
@@ -155,13 +160,17 @@ namespace Assignment1_F19
         */
         public static int numJewelsInStones(int[] J, int[] S)
         {
+            //sum will be used to record how many numbers in S that are also in J
             int sum = 0;
             try
             {
+                //Iterate through the S array using for loop
                 for (int i = 0; i < S.Length; i++)
                 {
+                    //Iterate through the J array using for loop
                     for (int t = 0; t < J.Length; t++)
                     {
+                        //Determine whether the number in S is equal to the number in J
                         if (S[i] == J[t])
                             sum = sum + 1;
                     }
