@@ -38,6 +38,7 @@ namespace Assignment1_F19
          * For example 1, 22 will print all the self.-dividing numbers between 1 and 22 i.e. 
          * 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22
          */
+        //self-reflection: At first, I did not realize the multiple of 10.
         public static void printSelfDividingNumbers(int x, int y)
         {
             try
@@ -84,13 +85,14 @@ namespace Assignment1_F19
          * 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6 …. n terms
          * For example, if n = 5, output will be 1, 2, 2, 3, 3
         */
+        //self-reflection: the key of this question is to set a counter to control the numbers that will be output
         public static void printSeries(int n)
         {
             //t will be used to control how many numbers will be output
             int t = 0;
             try
             {
-                //Output the number from 1 
+                //Output the number from 1 to n
                 for (int i = 1; i <= n; i++)
                 {
                     //Iterate the number
@@ -100,7 +102,7 @@ namespace Assignment1_F19
                         if (t < n)
                         {
                             Console.Write(" " + i);
-                            //When a number is output, t plus 1. Until t=n, the loop ends
+                            //When a number is output, t plus 1 until t=n, the loop ends
                             t++;
                         }
                     }
@@ -123,6 +125,7 @@ namespace Assignment1_F19
               ***
                *
         */
+        //self-reflection:this fomula-2 * (n - k) + 1 is the key in my codes
         public static void printTriangle(int n)
         {
             try
@@ -161,6 +164,7 @@ namespace Assignment1_F19
          * J = [2], S = [0,0] will return the output: 
          * 0
         */
+        //self-reflection:I think it's relatively easy for me.
         public static int numJewelsInStones(int[] J, int[] S)
         {
             //sum will be used to record how many numbers in S that are also in J
@@ -199,11 +203,12 @@ namespace Assignment1_F19
          * and
          * a = [1,2,3,4,5,6], b = [1,2,5,6,7,8,9] will return the output: [5,6]
         */
+        //self-reflection:I think tracking the position of the contiguous equal numbers and getting the length of required array were hard for me.
         public static int[] getLargestCommonSubArray(int[] a, int[] b)
         {
             //This variable is uesd to iterate through the array a
             int i;
-            //This variable is used to get the value from "count" and it will be the last array having the maximum length
+            //This variable is used to get the value from "count" 
             int len = 0;
             //This variable is the position of the last equal number in the last array having the maximum length 
             int last = 0;
@@ -282,6 +287,10 @@ namespace Assignment1_F19
         */
         public static void solvePuzzle()
         {
+            //logic: 1.find all of the common letters in the two strings
+            //       2.split the uncommon letters in the two strings
+            //       3.find how many letters between these uncommon letters, and get the number
+            //       4.find the letter in step 3
             try
             {
                 // Write your code here
