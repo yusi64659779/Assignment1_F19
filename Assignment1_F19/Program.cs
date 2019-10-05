@@ -230,7 +230,7 @@ namespace Assignment1_F19
                         }
                         else
                         {
-                            if (a[i] < b[j])
+                            if (a[i] < b[j] && len==0)
                             {
                                 len = 0;
                                 break;
