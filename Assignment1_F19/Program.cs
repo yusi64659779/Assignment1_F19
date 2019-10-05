@@ -20,8 +20,8 @@ namespace Assignment1_F19
             int r4 = numJewelsInStones(J, S);
             Console.WriteLine(r4);
 
-            int[] arr1 = new int[] { 1, 2, 5, 6, 7, 8, 9 };
-            int[] arr2 = new int[] { 1, 2, 3, 4, 5 };
+            int[] arr1 = new int[] {0, 1, 2, 8, 9, 15, 22 };
+            int[] arr2 = new int[] { 1, 2, 3, 7, 8, 9 };
             int[] r5 = getLargestCommonSubArray(arr1, arr2);
             for (int r = 0; r < r5.Length; r++)
                 Console.Write(r5[r] + " ");
@@ -96,7 +96,7 @@ namespace Assignment1_F19
                 for (int i = 1; i <= n; i++)
                 {
                     //Iterate the number
-                    for (int j = 0; j < i; j++)
+                    for (int j = 1; j <= i; j++)
                     {
                         //Control how many numbers will be output using if clause
                         if (t < n)
@@ -206,74 +206,70 @@ namespace Assignment1_F19
         //self-reflection:I think tracking the position of the contiguous equal numbers and getting the length of required array were hard for me.
         public static int[] getLargestCommonSubArray(int[] a, int[] b)
         {
-            //This variable is uesd to iterate through the array a
-            int i;
-            //This variable is used to get the value from "count" 
+            //This variable is used to calculate how many equal numbers are contiguous
             int len = 0;
-            //This variable is the position of the last equal number in the last array having the maximum length 
-            int last = 0;
+            //This variable is used to get the value from "len" 
+            int max = 0;
+            //This variable is the position of the last equal number in the last array having the maximum length
+            int po = 0;
             //This variable is used to iterate through the array b
             int j = 0;
-            //This variable is used to calculate how many equal numbers are contiguous 
-            int count = 0;          
+            //This variable is uesd to iterate through the array a
+            int i;
             try
             {
-                ////Iterate through the a array using for loop
                 for (i = 0; i < a.Length; i++)
                 {
-                    //Iterate through the b array using for loop
                     for (; j < b.Length; j++)
                     {
                         if (b[j] == a[i])
                         {
-                            //Calculate how many contiguous equal elements in these two arrays
-                            count++;
-                            //Swap the b array to the same position as a array
+                            len++;
                             j++;
                             break;
                         }
-                        //If the numbers in a and be are not equal, How many contiguous equal numbers have been counted before and the last position of contiguous equal numbers need to be recorded 
                         else
                         {
-                            //Compare so that we can get the max length of contiguous commomn array
-                            if (count >= len)
-                            {
-                                len = count;
-                                count = 0;
-                                last = i - 1;
-                            }
-                            //As the array is sorted we can compare and lements are not equal , we can compare the next element
                             if (a[i] < b[j])
                             {
-                                count = 0;
+                                len = 0;
                                 break;
                             }
+                            else if (len >= max)
+                            {
+                                max = len;
+                                po = i - 1;
+                                len = 0;
 
+                            }
                         }
-
                     }
+                    if (j >= b.Length)
+                    {
+                        if (len >= max)
+                        {
+                            max = len;
+                            po = i;
+                            len = 0;
+                        }
+                        break;
+                    }
+
                 }
-                //Get count, len and end last value outside the loop
-                if (count >= len)
+                int[] p = new int[max];
+                int k = 0;
+                for (i = po - max + 1; k < max; i++, k++)
                 {
-                    len = count;
-                    count = 0;
-                    last = i - 1;
+                    p[k] = a[i];
                 }
-                //Output the last array having the maximum length
-                int[] c = new int[len]; j = 0;
-                for (i = last - len + 1; i <= last; i++, j++)
-                {
-                    c[j] = a[i];
-                }
-                return c; // return the actual array
+                return p;
             }
             catch
             {
                 Console.WriteLine("Exception occured while computing getLargestCommonSubArray()");
             }
-
             return null;
+
         }
 
         /*
